@@ -1,1 +1,11 @@
-<p>person-card works!</p>
+<article class="card">
+  <img
+    class="card__avatar"
+    [src]="person().picture.medium"
+    alt="${{ person().name.first }} +''¨${{ person().name.last }}"
+    width="96"
+    height="96"
+  />
+  <h3 class="card__name">{{ person().name.first }} {{ person().name.last }}</h3>
+  <p class="card__location">{{ person().location.city }}</p>
+</article>
