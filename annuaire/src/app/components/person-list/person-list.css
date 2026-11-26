@@ -8,3 +8,88 @@
   background: #f4f5f7;
   justify-content: center;
 }
+.search-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem 2rem;
+  font-family:
+    system-ui,
+    -apple-system,
+    'Segoe UI',
+    Roboto,
+    sans-serif;
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.search__label {
+  font-size: 1rem;
+  color: #333;
+}
+
+.search__field {
+  position: relative;
+  flex: 0 1 15rem;
+}
+
+.search__input {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0.4rem 2.25rem 0.4rem 0.6rem;
+  font: inherit;
+  font-size: 1rem;
+  color: #1a1a1a;
+  background: #fff;
+  border: 1px solid #c4c8cf;
+  border-radius: 0.25rem;
+  appearance: none;
+}
+
+.search__input::placeholder {
+  color: #767676;
+}
+
+.search__input:focus {
+  outline: none;
+  border-color: #2b5fb4;
+  box-shadow: 0 0 0 1px #2b5fb4;
+}
+
+.search__input::-webkit-search-cancel-button {
+  appearance: none;
+}
+
+.search__clear {
+  position: absolute;
+  top: 50%;
+  right: 0.25rem;
+  translate: 0 -50%;
+  display: grid;
+  place-items: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  padding: 0;
+  color: #2b5fb4;
+  background: none;
+  border: 0;
+  border-radius: 0.25rem;
+  cursor: pointer;
+}
+
+.search__clear[hidden] {
+  display: none;
+}
+
+.search__clear:hover {
+  background: #eef2f9;
+}
+
+.search__clear:focus-visible {
+  outline: 2px solid #2b5fb4;
+  outline-offset: 1px;
+}
