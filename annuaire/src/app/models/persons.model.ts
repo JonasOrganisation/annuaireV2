@@ -4,11 +4,16 @@ export type Person = {
   gender: 'male | female';
   location: {
     city: string;
+    state: string;
   };
-  picture: { medium: string };
+  picture: {
+    large: string;
+    medium: string;
+    thumbnail: string;
+  };
   email: string;
   phone: string;
-  mobile: string;
+  cell: string;
   dob: { age: number };
   nat: string;
 };

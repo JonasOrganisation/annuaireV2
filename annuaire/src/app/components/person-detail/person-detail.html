@@ -1,0 +1,47 @@
+<a routerLink="/">Retour à l'annuaire</a>
+<app-async-state [loading]="loading()" [error]="error()" loadingText="Chargement de l'annuaire…">
+  @if (person(); as p) {
+    <article class="profile-card">
+      <img
+        class="profile-card__avatar"
+        [src]="p.picture.large"
+        alt="{{ p.name.first }} {{ p.name.last }}"
+        width="128"
+        height="128"
+      />
+      <h2 class="profile-card__name">{{ p.name.first }} {{ p.name.last }}</h2>
+
+      <dl class="profile-card__details">
+        <dt>Âge</dt>
+        <dd>{{ p.dob.age }}</dd>
+
+        <dt>Email</dt>
+        <dd>
+          <p>{{ p.email }}</p>
+        </dd>
+
+        <dt>Téléphone</dt>
+        <dd>
+          <p>{{ p.phone }}</p>
+        </dd>
+
+        <dt>Portable</dt>
+        <dd>
+          <p>{{ p.cell }}</p>
+        </dd>
+
+        <dt>{{ p.location.city }}</dt>
+        <dd>
+          {{ p.location.state }},
+          @if (p.nat === 'FR') {
+            France
+          } @else {
+            {{ p.nat }}
+          }
+        </dd>
+      </dl>
+    </article>
+  } @else {
+    <h2>Personne introuvable</h2>
+  }
+</app-async-state>
