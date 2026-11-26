@@ -1,0 +1,8 @@
+<p>Liste de personnes:</p>
+{{ count() }}
+@for (p of people(); track p.login.uuid) {
+  <p>{{ p.name.first }}</p>
+  <app-person-card />
+} @empty {
+  <p>rrrrrrrrrrrrrrrrr</p>
+}
