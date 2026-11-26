@@ -2,8 +2,10 @@
 <app-async-state [loading]="loading()" [error]="error()" loadingText="Chargement du catalogue…">
   <section class="card-list">
     @for (p of people(); track p.login.uuid) {
-      <!-- <p>{{ p.name.first }}</p> -->
-      <app-person-card [person]="p" />
+      <a [routerLink]="['/personnes', p.login.uuid]">
+        <!-- <p>{{ p.name.first }}</p> -->
+        <app-person-card [person]="p" />
+      </a>
     } @empty {
       <p>Annuaire indisponible !</p>
     }
