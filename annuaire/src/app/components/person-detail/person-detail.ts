@@ -11,7 +11,7 @@ import { AsyncState } from '../../async-state/async-state';
 export class PersonDetail {
   private readonly apiService = inject(PeopleApiService);
   uuid = input.required<string>();
-  people = computed(() => this.apiService.people().find((p) => p.login.uuid === this.uuid()));
+  person = computed(() => this.apiService.people().find((p) => p.login.uuid === this.uuid()));
   loading = this.apiService.loading;
   error = this.apiService.error;
 }

@@ -1,7 +1,39 @@
 <p>Liste de personnes:</p>
+<div class="search-bar">
+  <div class="search">
+    <label class="search__label" for="search-1">Contient</label>
+    <div class="search__field">
+      <input
+        #searchInput
+        class="search__input"
+        id="search-1"
+        type="search"
+        autocomplete="off"
+        placeholder="Nom ou prénom"
+        [value]="search()"
+        (input)="onChange($event)"
+      />
+      <button
+        (click)="onClear()"
+        class="search__clear"
+        type="button"
+        aria-label="Effacer la recherche « contient »"
+      >
+        <svg viewBox="0 0 16 16" width="12" height="12" aria-hidden="true">
+          <path
+            d="M3 3l10 10M13 3L3 13"
+            stroke="currentColor"
+            stroke-width="2.5"
+            stroke-linecap="round"
+          />
+        </svg>
+      </button>
+    </div>
+  </div>
+</div>
 <app-async-state [loading]="loading()" [error]="error()" loadingText="Chargement du catalogue…">
   <section class="card-list">
-    @for (p of people(); track p.login.uuid) {
+    @for (p of visiblePersons(); track p.login.uuid) {
       <a [routerLink]="['/personnes', p.login.uuid]">
         <!-- <p>{{ p.name.first }}</p> -->
         <app-person-card [person]="p" />
@@ -11,3 +43,39 @@
     }
   </section>
 </app-async-state>
+<!-- <form class="search" role="search">
+  <label class="search__label" for="search-2">Commence par</label>
+  <div class="search__field">
+    <input
+      class="search__input"
+      id="search-2"
+      type="search"
+      autocomplete="off"
+      placeholder="Nom ou prénom"
+      [formField]="filterForm.search"
+    />
+    <button
+      (click)="onClear()"
+      class="search__clear"
+      type="reset"
+      aria-label="Effacer la recherche « commence par »"
+    >
+      <svg viewBox="0 0 16 16" width="12" height="12" aria-hidden="true">
+        <path
+          d="M3 3l10 10M13 3L3 13"
+          stroke="currentColor"
+          stroke-width="2.5"
+          stroke-linecap="round"
+        />
+      </svg>
+    </button>
+  </div>
+</form>
+<section class="card-list">
+  @for (p of visibleFilter(); track p.login.uuid) {
+    <a [routerLink]="['/personnes', p.login.uuid]">
+      <p>{{ p.name.first }}</p>
+      <app-person-card [person]="p" />
+    </a>
+  }
+</section> -->
