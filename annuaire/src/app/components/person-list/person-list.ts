@@ -2,11 +2,11 @@ import { Component, inject, signal, computed } from '@angular/core';
 import { PeopleApiService } from '../../services/people-api.service';
 import { PersonCard } from '../person-card/person-card';
 import { AsyncState } from '../../async-state/async-state';
-import { RouterLink } from '@angular/router';
-import { FormField, form } from '@angular/forms/signals';
+import { MatFormField, MatInput, MatLabel } from '@angular/material/input';
+import { FavoriteServiceService } from '../../services/favorite-service.service';
 
 @Component({
-  imports: [PersonCard, AsyncState, RouterLink, FormField],
+  imports: [PersonCard, AsyncState, MatFormField, MatInput],
   selector: 'app-person-list',
   styleUrl: './person-list.css',
   templateUrl: './person-list.html',
@@ -19,7 +19,7 @@ export class PersonList {
   error = this.apiService.error;
 
   search = signal<string>('');
-
+  favorites = inject(FavoriteServiceService);
   onClear(): void {
     this.search.set('');
     // this.filter.set({ search: '' });

@@ -1,9 +1,19 @@
 <p>Liste de personnes:</p>
+
 <div class="search-bar">
   <div class="search">
     <label class="search__label" for="search-1">Contient</label>
     <div class="search__field">
-      <input
+      <mat-form-field>
+        <input
+          matInput
+          type="search"
+          placeholder="Prénom ou nom"
+          [value]="search()"
+          (input)="onChange($event)"
+        />
+      </mat-form-field>
+      <!-- <input
         #searchInput
         class="search__input"
         id="search-1"
@@ -12,7 +22,7 @@
         placeholder="Nom ou prénom"
         [value]="search()"
         (input)="onChange($event)"
-      />
+      /> -->
       <button
         (click)="onClear()"
         class="search__clear"
@@ -34,10 +44,12 @@
 <app-async-state [loading]="loading()" [error]="error()" loadingText="Chargement du catalogue…">
   <section class="card-list">
     @for (p of visiblePersons(); track p.login.uuid) {
-      <a [routerLink]="['/personnes', p.login.uuid]">
-        <!-- <p>{{ p.name.first }}</p> -->
-        <app-person-card [person]="p" />
-      </a>
+      <!-- <p>{{ p.name.first }}</p> -->
+      <app-person-card
+        [person]="p"
+        (toggleFavorite)="favorites.addFav($event.login.uuid)"
+        [favorite]="favorites.isFav(p.login.uuid)"
+      />
     } @empty {
       <p>Annuaire indisponible !</p>
     }
