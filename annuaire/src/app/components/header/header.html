@@ -1,4 +1,6 @@
 <header>
   <p>Annuaire</p>
   <p>{{ count() }} personnes</p>
+  <button (click)="favService.clear()">Clear Fav</button>
+  <a routerLink="/favorite">Favorite {{ countFav() }}</a>
 </header>
